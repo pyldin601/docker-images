@@ -1,4 +1,4 @@
-IMAGE_ID := "pldin601/php-nginx-base"
+IMAGE_ID := "pldin601/web-php-base"
 
 build:
 	docker build -t $(IMAGE_ID) .
