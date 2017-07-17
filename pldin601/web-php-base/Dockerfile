@@ -43,12 +43,15 @@ RUN apt-get update && \
 COPY ./fpm-docker.conf /etc/php/$PHP_VERSION/fpm/pool.d/
 COPY ./supervisord.conf /etc/supervisor/supervisord.conf
 COPY ./nginx-fpm.conf /etc/nginx/sites-available/nginx-fpm.conf
+
 COPY ./index.php /usr/app/public/
+COPY ./startup.sh /usr/app/
+COPY ./entrypoint.sh /
 
 # Configure nginx
 RUN rm -f /etc/nginx/sites-enabled/* && \
     ln -s /etc/nginx/sites-available/nginx-fpm.conf /etc/nginx/sites-enabled/nginx-fpm.conf
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["/entrypoint.sh"]
 
 EXPOSE 8080

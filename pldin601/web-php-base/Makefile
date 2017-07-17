@@ -7,4 +7,4 @@ push:
 	docker push $(IMAGE_ID)
 
 run:
-	docker run --rm -p 8080:8080  $(IMAGE_ID)
+	docker run -it --rm -p 8080:8080  $(IMAGE_ID)
