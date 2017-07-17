@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 BASH=$(which bash)
+WD=$PWD
 
 if [ -f /usr/app/startup.sh ]; then
-    $BASH /usr/app/startup.sh; status=$?
+    cd /usr/app/
+    $BASH startup.sh
+    status=$?
+    cd $PWD
     if [[ $status != 0 ]]; then
         echo "Startup script returned with error code $status"
         exit $status
