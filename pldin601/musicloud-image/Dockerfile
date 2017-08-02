@@ -4,7 +4,7 @@ MAINTAINER Roman Lakhtadyr <roman.lakhtadyr@gmail.com>
 
 # Install node.js, npm, web server and media applications
 RUN (curl -sL https://deb.nodesource.com/setup_8.x | bash) && \
-    apt-get install -y nodejs cron && \
+    apt-get install -y nodejs cron make && \
     apt-get clean && \
 
     { \
@@ -22,5 +22,7 @@ RUN (curl -sL https://deb.nodesource.com/setup_8.x | bash) && \
 
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /usr/bin/wait-for-it
 RUN chmod +x /usr/bin/wait-for-it
+
+RUN npm i -g ytdl
 
 VOLUME /var/tmp/musicloud
